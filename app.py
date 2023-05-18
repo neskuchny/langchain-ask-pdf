@@ -12,10 +12,10 @@ from langchain.callbacks import get_openai_callback
 def main():
     load_dotenv()
     st.set_page_config(page_title="Спроси свой PDF")
-    st.header("Ask your PDF 💬")
+    st.header("Спроси свой PDF 💬")
     
     # upload file
-    pdf = st.file_uploader("Upload your PDF", type="pdf")
+    pdf = st.file_uploader("Загрузи свой PDF", type="pdf")
     
     # extract the text
     if pdf is not None:
@@ -27,7 +27,7 @@ def main():
       # split into chunks
       text_splitter = CharacterTextSplitter(
         separator="\n",
-        chunk_size=1000,
+        chunk_size=800,
         chunk_overlap=200,
         length_function=len
       )
@@ -38,7 +38,7 @@ def main():
       knowledge_base = FAISS.from_texts(chunks, embeddings)
       
       # show user input
-      user_question = st.text_input("Ask a question about your PDF:")
+      user_question = st.text_input("Задай вопрос о документе:")
       if user_question:
         docs = knowledge_base.similarity_search(user_question)
         
