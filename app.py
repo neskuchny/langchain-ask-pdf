@@ -11,7 +11,7 @@ from langchain.callbacks import get_openai_callback
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="Ask your PDF")
+    st.set_page_config(page_title="Спроси свой PDF")
     st.header("Ask your PDF 💬")
     
     # upload file
